@@ -50,3 +50,4 @@ def parse_graph(file):
 
 
 graph = parse_graph("example.gxl")
+graph.draw_incidence_matrix()
