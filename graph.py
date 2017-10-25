@@ -1,12 +1,12 @@
 class Node:
-    def __init__(self, index, name, attrs):
+    def __init__(self, index, name='', attrs=''):
         self.index = index
         self.name = name
         self.attrs = attrs
 
 
 class Edge:
-    def __init__(self, index, name, node_from, node_to, attrs):
+    def __init__(self, index, name='', node_from='', node_to='', attrs=''):
         self.index = index
         self.name = name
         self.node_from = node_from
