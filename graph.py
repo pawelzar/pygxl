@@ -4,6 +4,9 @@ class Node:
         self.name = name
         self.attr = attr
 
+    def __str__(self):
+        return self.index
+
 
 class Edge:
     def __init__(self, index, name='', node_from='', node_to='', attr=''):
@@ -13,17 +16,19 @@ class Edge:
         self.node_to = node_to
         self.attr = attr
 
+    def __str__(self):
+        return self.index
+
 
 class Graph:
     def __init__(self, nodes, edges):
         self.nodes = nodes
         self.edges = edges
+        self.incidence_matrix = self._create_incidence_matrix()
 
-    @property
-    def incidence_matrix(self):
+    def _create_incidence_matrix(self):
         """
-        Construct incidence matrix of graph. Returns grid with described edge
-        indices and node indices.
+        Constructs incidence matrix of graph.
         """
         matrix = [
             [0 for _ in range(len(self.edges))] for _ in range(len(self.nodes))
@@ -43,20 +48,20 @@ class Graph:
         """
         Returns the output of incidence matrix in a pleasing look.
         """
+        edge_ids = [e.index for e in self.edges]
+        longest_edge_id = len(max(edge_ids, key=len))
         longest_node_id = len(max([n.index for n in self.nodes], key=len))
-        longest_edge_id = len(max([e.index for e in self.edges], key=len))
         spacing = max(longest_edge_id + 1, 3)
 
-        matrix = list()
-        matrix.append(''.join(
-            ['{:>{}}'.format('', longest_node_id)] +
-            ['{:>{}}'.format(e.index, spacing) for e in self.edges]
-        ))
+        def line(index, values):
+            return (''.join(
+                ['{:>{}}'.format(index, longest_node_id)] +
+                ['{:>{}}'.format(value, spacing) for value in values]
+            ))
+
+        matrix = [line('', edge_ids)]
 
         for i, row in enumerate(self.incidence_matrix):
-            matrix.append(''.join(
-                ['{:>{}}'.format(self.nodes[i].index, longest_node_id)] +
-                ['{:>{}}'.format(value, spacing) for value in row]
-            ))
+            matrix.append(line(self.nodes[i].index, row))
 
         return matrix
