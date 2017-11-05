@@ -12,14 +12,14 @@ class GXLParser:
         nodes = []
 
         for node in root.iter('node'):
-            attrs = node.find('attr')
+            attr = node.find('attr')
             node_id = node.attrib.get('id')
-            node_name = attrs.attrib.get('name')
-            node_attrs = [child.text for child in attrs]
+            node_name = attr.attrib.get('name')
+            node_attr = [child.text for child in attr]
             nodes.append(Node(
                 index=node_id,
                 name=node_name,
-                attrs=node_attrs
+                attr=node_attr
             ))
 
         return nodes
@@ -32,28 +32,28 @@ class GXLParser:
         edges = []
 
         for edge in root.iter('edge'):
-            attrs = edge.find('attr')
+            attr = edge.find('attr')
             edge_id = edge.attrib.get('id')
             node_from = edge.attrib.get('from')
             node_to = edge.attrib.get('to')
-            edge_name = attrs.attrib.get('name')
-            edge_attrs = [child.text for child in attrs]
+            edge_name = attr.attrib.get('name')
+            edge_attr = [child.text for child in attr]
             edges.append(Edge(
                 index=edge_id,
                 name=edge_name,
                 node_from=node_from,
                 node_to=node_to,
-                attrs=edge_attrs
+                attr=edge_attr
             ))
 
         return edges
 
     @staticmethod
-    def read(file):
+    def read(input_file):
         """
         Construct Graph object from GXL file.
         """
-        tree = ElementTree.parse(file)
+        tree = ElementTree.parse(input_file)
         root = tree.getroot()
         nodes = GXLParser.parse_nodes(root)
         edges = GXLParser.parse_edges(root)
@@ -63,4 +63,4 @@ class GXLParser:
 
 if __name__ == '__main__':
     graph = GXLParser.read('example.gxl')
-    graph.draw_incidence_matrix()
+    print('\n'.join(graph.incidence_matrix_str))

@@ -1,17 +1,17 @@
 class Node:
-    def __init__(self, index, name='', attrs=''):
+    def __init__(self, index, name='', attr=''):
         self.index = index
         self.name = name
-        self.attrs = attrs
+        self.attr = attr
 
 
 class Edge:
-    def __init__(self, index, name='', node_from='', node_to='', attrs=''):
+    def __init__(self, index, name='', node_from='', node_to='', attr=''):
         self.index = index
         self.name = name
         self.node_from = node_from
         self.node_to = node_to
-        self.attrs = attrs
+        self.attr = attr
 
 
 class Graph:
@@ -36,22 +36,27 @@ class Graph:
                 if edge.node_to == node.index:
                     matrix[node_id][edge_id] = -1
 
-        for row_id, node in enumerate(self.nodes):
-            matrix[row_id].insert(0, node.index)
-
-        matrix.insert(0, [''] + [edge.index for edge in self.edges])
-
         return matrix
 
-    def draw_incidence_matrix(self):
+    @property
+    def incidence_matrix_str(self):
         """
-        Prints the output of incidence matrix in a pleasing look.
+        Returns the output of incidence matrix in a pleasing look.
         """
-        for row in self.incidence_matrix:
-            longest = len(max(
-                [item.index for item in self.edges + self.nodes],
-                key=len
+        longest_node_id = len(max([n.index for n in self.nodes], key=len))
+        longest_edge_id = len(max([e.index for e in self.edges], key=len))
+        spacing = max(longest_edge_id + 1, 3)
+
+        matrix = list()
+        matrix.append(''.join(
+            ['{:>{}}'.format('', longest_node_id)] +
+            ['{:>{}}'.format(e.index, spacing) for e in self.edges]
+        ))
+
+        for i, row in enumerate(self.incidence_matrix):
+            matrix.append(''.join(
+                ['{:>{}}'.format(self.nodes[i].index, longest_node_id)] +
+                ['{:>{}}'.format(value, spacing) for value in row]
             ))
-            print(' '.join(
-                '{:>{length}}'.format(item, length=longest) for item in row)
-            )
+
+        return matrix
