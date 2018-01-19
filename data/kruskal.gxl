@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gxl SYSTEM "http://www.gupro.de/GXL/gxl-1.0.dtd">
+<!-- simple example 05.02.2002 -->
+<gxl xmlns:xlink=" http://www.w3.org/1999/xlink">
+  <graph>
+    <node id="0">
+    </node>
+    <node id="1">
+    </node>
+    <node id="2">
+    </node>
+    <node id="3">
+    </node>
+    <node id="4">
+    </node>
+    <node id="5">
+    </node>
+    <node id="6">
+    </node>
+    <node id="7">
+    </node>
+    <edge id="e1" from="0" to="1">
+      <attr name="weight">
+        <int>5</int>
+      </attr>
+    </edge>
+    <edge id="e2" from="0" to="3">
+      <attr name="weight">
+        <int>9</int>
+      </attr>
+    </edge>
+    <edge id="e3" from="0" to="6">
+      <attr name="weight">
+        <int>3</int>
+      </attr>
+    </edge>
+    <edge id="e4" from="1" to="2">
+      <attr name="weight">
+        <int>9</int>
+      </attr>
+    </edge>
+    <edge id="e5" from="1" to="4">
+      <attr name="weight">
+        <int>8</int>
+      </attr>
+    </edge>
+    <edge id="e6" from="1" to="5">
+      <attr name="weight">
+        <int>6</int>
+      </attr>
+    </edge>
+    <edge id="e7" from="0" to="7">
+      <attr name="weight">
+        <int>7</int>
+      </attr>
+    </edge>
+    <edge id="e8" from="2" to="3">
+      <attr name="weight">
+        <int>9</int>
+      </attr>
+    </edge>
+    <edge id="e9" from="2" to="4">
+      <attr name="weight">
+        <int>4</int>
+      </attr>
+    </edge>
+    <edge id="e10" from="2" to="6">
+      <attr name="weight">
+        <int>5</int>
+      </attr>
+    </edge>
+    <edge id="e11" from="2" to="7">
+      <attr name="weight">
+        <int>3</int>
+      </attr>
+    </edge>
+    <edge id="e12" from="3" to="6">
+      <attr name="weight">
+        <int>8</int>
+      </attr>
+    </edge>
+    <edge id="e13" from="4" to="5">
+      <attr name="weight">
+        <int>2</int>
+      </attr>
+    </edge>
+    <edge id="e14" from="4" to="6">
+      <attr name="weight">
+        <int>1</int>
+      </attr>
+    </edge>
+    <edge id="e15" from="5" to="6">
+      <attr name="weight">
+        <int>6</int>
+      </attr>
+    </edge>
+    <edge id="e16" from="6" to="7">
+      <attr name="weight">
+        <int>9</int>
+      </attr>
+    </edge>
+  </graph>
+</gxl>

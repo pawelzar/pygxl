@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gxl SYSTEM "http://www.gupro.de/GXL/gxl-1.0.dtd">
+<!-- simple example 05.02.2002 -->
+<gxl xmlns:xlink=" http://www.w3.org/1999/xlink">
+  <graph>
+    <node id="A">
+    </node>
+    <node id="B">
+    </node>
+    <node id="C">
+    </node>
+    <node id="D">
+    </node>
+    <node id="E">
+    </node>
+    <node id="F">
+    </node>
+    <edge id="e1" from="A" to="B">
+      <attr name="weight">
+        <int>1</int>
+      </attr>
+    </edge>
+    <edge id="e2" from="A" to="D">
+      <attr name="weight">
+        <int>4</int>
+      </attr>
+    </edge>
+    <edge id="e3" from="A" to="E">
+      <attr name="weight">
+        <int>3</int>
+      </attr>
+    </edge>
+    <edge id="e4" from="B" to="D">
+      <attr name="weight">
+        <int>4</int>
+      </attr>
+    </edge>
+    <edge id="e5" from="B" to="E">
+      <attr name="weight">
+        <int>2</int>
+      </attr>
+    </edge>
+    <edge id="e6" from="D" to="E">
+      <attr name="weight">
+        <int>4</int>
+      </attr>
+    </edge>
+    <edge id="e7" from="E" to="C">
+      <attr name="weight">
+        <int>4</int>
+      </attr>
+    </edge>
+    <edge id="e8" from="E" to="F">
+      <attr name="weight">
+        <int>7</int>
+      </attr>
+    </edge>
+    <edge id="e9" from="C" to="F">
+      <attr name="weight">
+        <int>5</int>
+      </attr>
+    </edge>
+  </graph>
+</gxl>
