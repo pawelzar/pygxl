@@ -1,7 +1,6 @@
 class Node:
-    def __init__(self, index, name='', attr=''):
+    def __init__(self, index, attr={}):
         self.index = index
-        self.name = name
         self.attr = attr
 
     def __str__(self):
@@ -9,9 +8,8 @@ class Node:
 
 
 class Edge:
-    def __init__(self, index, name='', node_from='', node_to='', attr=''):
+    def __init__(self, index, node_from='', node_to='', attr={}):
         self.index = index
-        self.name = name
         self.node_from = node_from
         self.node_to = node_to
         self.attr = attr
@@ -65,3 +63,22 @@ class Graph:
             matrix.append(line(self.nodes[i].index, row))
 
         return matrix
+
+    def get_nodes_by_attr(self, attr_name, attr):
+        """
+        Returns nodes that have given attribute.
+        """
+        return [
+            node for node in self.nodes if node.attr.get(attr_name) == attr
+        ]
+
+    def get_neighbour_nodes_from(self, node):
+        """
+        Returns neighbour nodes that can be accessed from given node.
+        """
+        edges_from_node = sorted([
+            edge for edge in self.edges if edge.node_from == node.index
+        ], key=lambda edge: edge.attr.get('weight'))
+        return [
+            edge.node_to for edge in edges_from_node
+        ]
