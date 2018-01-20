@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gxl SYSTEM "http://www.gupro.de/GXL/gxl-1.0.dtd">
+<!-- simple example 05.02.2002 -->
+<gxl xmlns:xlink=" http://www.w3.org/1999/xlink">
+  <graph>
+		<node id="Marek">
+			<attr name="name">
+				<string>Marek</string>		
+			</attr>
+			<attr name="gender">
+				<string>male</string>		
+			</attr>
+		</node>
+		<node id="Andrzej">
+			<attr name="name">
+				<string>Andrzej</string>		
+			</attr>
+			<attr name="gender">
+				<string>male</string>		
+			</attr>
+		</node>
+		<node id="Pawel">
+			<attr name="name">
+				<string>Pawel</string>		
+			</attr>
+			<attr name="gender">
+				<string>male</string>		
+			</attr>
+		</node>
+		<node id="Monika">
+			<attr name="name">
+				<string>Monika</string>		
+			</attr>
+			<attr name="gender">
+				<string>female</string>		
+			</attr>
+		</node>
+		<node id="Ewa">
+			<attr name="name">
+				<string>Ewa</string>
+			</attr>
+			<attr name="gender">
+				<string>female</string>		
+			</attr>
+		</node>
+		<node id="Ania">
+			<attr name="name">
+				<string>Ania</string>
+			</attr>
+			<attr name="gender">
+				<string>female</string>		
+			</attr>
+		</node>
+		<edge id="e1" to="Marek" from="Monika">
+			<attr name="weight">
+				<int>10</int>
+			</attr>
+    </edge>
+    <edge id="e2" to="Marek" from="Ewa">
+			<attr name="weight">
+				<int>20</int>
+			</attr>
+    </edge>
+    <edge id="e3" to="Marek" from="Ania">
+			<attr name="weight">
+				<int>30</int>
+			</attr>
+    </edge>
+    <edge id="e4" to="Andrzej" from="Monika">
+			<attr name="weight">
+				<int>17</int>
+			</attr>
+    </edge>
+    <edge id="e5" to="Andrzej" from="Ewa">
+			<attr name="weight">
+				<int>33</int>
+			</attr>
+    </edge>
+    <edge id="e6" to="Andrzej" from="Ania">
+			<attr name="weight">
+				<int>12</int>
+			</attr>
+		</edge>
+    <edge id="e7" to="Pawel" from="Monika">
+			<attr name="weight">
+				<int>45</int>
+			</attr>
+    </edge>
+    <edge id="e8" to="Pawel" from="Ewa">
+			<attr name="weight">
+				<int>6</int>
+			</attr>
+    </edge>
+    <edge id="e9" to="Pawel" from="Ania">
+			<attr name="weight">
+				<int>18</int>
+			</attr>
+    </edge>
+  </graph>
+</gxl>
