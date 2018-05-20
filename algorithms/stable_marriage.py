@@ -1,12 +1,13 @@
 import networkx as nx
 
-def stable_marriage(graph):
-    A = nx.Graph()
-    A.add_nodes_from(graph['males'], bipartite=0)
-    A.add_nodes_from(graph['females'], bipartite=1)
-    A.add_weighted_edges_from(graph['edges'], weight='weight')
 
-    return get_edges(graph, nx.max_weight_matching(A))
+def stable_marriage(graph):
+    nx_graph = nx.Graph()
+    nx_graph.add_nodes_from(graph['males'], bipartite=0)
+    nx_graph.add_nodes_from(graph['females'], bipartite=1)
+    nx_graph.add_weighted_edges_from(graph['edges'], weight='weight')
+
+    return get_edges(graph, nx.max_weight_matching(nx_graph))
 
 
 def get_edges(graph, connections):

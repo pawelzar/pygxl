@@ -1,5 +1,5 @@
 from draw import draw_kruskal, draw_stable_marriage
-from parser import GXLParser
+from gxlparser import GXLParser
 
 
 if __name__ == '__main__':
@@ -8,7 +8,6 @@ if __name__ == '__main__':
 
     graph = GXLParser.read('data/marriage.gxl')
     draw_stable_marriage(graph)
-
 
     # WIKIPEDIA MINIMUM SPANNING TREE EXAMPLES
 
@@ -25,7 +24,6 @@ if __name__ == '__main__':
 
     graph = GXLParser.read('data/kruskal_one.gxl')
     draw_kruskal(graph, pos)
-
 
     # MORE COMPLEX MINIMUM SPANNING TREE EXAMPLE
 
