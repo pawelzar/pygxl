@@ -13,15 +13,10 @@ def shift_position(node_positions):
     }
 
 
-def draw_simple(graph):
-    node_positions = nx.spring_layout(graph)
-    labels = nx.get_edge_attributes(graph, 'weight')
-    nx.draw(graph, node_positions, with_labels=True)
-    nx.draw_networkx_edge_labels(graph, node_positions, edge_labels=labels)
-    plt.show()
+def draw_graph(graph, node_positions=None):
+    if not node_positions:
+        node_positions = nx.spring_layout(graph)
 
-
-def draw_simple_pos(graph, node_positions):
     labels = nx.get_edge_attributes(graph, 'weight')
     nx.draw(
         graph, node_positions, with_labels=True, node_color='c', node_size=500
@@ -47,15 +42,15 @@ def draw_kruskal(graph, node_positions):
         print(edge)
     print('Total weight: {}'.format(weight_sum))
 
-    graph_a = nx.Graph()
-    graph_a.add_nodes_from(simple_graph['nodes'])
-    graph_a.add_weighted_edges_from(simple_graph['edges'], weight='weight')
-    draw_simple_pos(graph_a, node_positions)
+    initial_graph = nx.Graph()
+    initial_graph.add_nodes_from(simple_graph['nodes'])
+    initial_graph.add_weighted_edges_from(simple_graph['edges'])
+    draw_graph(initial_graph, node_positions)
 
-    graph_b = nx.Graph()
-    graph_b.add_nodes_from(simple_graph['nodes'])
-    graph_b.add_weighted_edges_from(minimum_spanning_tree, weight='weight')
-    draw_simple_pos(graph_b, shift_position(node_positions))
+    solution_graph = nx.Graph()
+    solution_graph.add_nodes_from(simple_graph['nodes'])
+    solution_graph.add_weighted_edges_from(minimum_spanning_tree)
+    draw_graph(solution_graph, shift_position(node_positions))
 
     plt.get_current_fig_manager().window.wm_geometry('+400+100')
     plt.show()
@@ -87,17 +82,17 @@ def draw_stable_marriage(graph):
         weight_sum += weight
     print('Total weight: {}'.format(weight_sum))
 
-    graph_a = nx.Graph()
-    graph_a.add_nodes_from(simple_graph['male_nodes'], bipartite=0)
-    graph_a.add_nodes_from(simple_graph['female_nodes'], bipartite=1)
-    graph_a.add_weighted_edges_from(simple_graph['edges'], weight='weight')
-    draw_simple_pos(graph_a, node_positions)
+    initial_graph = nx.Graph()
+    initial_graph.add_nodes_from(simple_graph['male_nodes'], bipartite=0)
+    initial_graph.add_nodes_from(simple_graph['female_nodes'], bipartite=1)
+    initial_graph.add_weighted_edges_from(simple_graph['edges'])
+    draw_graph(initial_graph, node_positions)
 
-    graph_b = nx.Graph()
-    graph_b.add_nodes_from(simple_graph['male_nodes'], bipartite=0)
-    graph_b.add_nodes_from(simple_graph['female_nodes'], bipartite=1)
-    graph_b.add_weighted_edges_from(marriage_edges, weight='weight')
-    draw_simple_pos(graph_b, shift_position(node_positions))
+    solution_graph = nx.Graph()
+    solution_graph.add_nodes_from(simple_graph['male_nodes'], bipartite=0)
+    solution_graph.add_nodes_from(simple_graph['female_nodes'], bipartite=1)
+    solution_graph.add_weighted_edges_from(marriage_edges)
+    draw_graph(solution_graph, shift_position(node_positions))
 
     plt.get_current_fig_manager().window.wm_geometry('+400+100')
     plt.show()

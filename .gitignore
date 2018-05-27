@@ -3,4 +3,5 @@ __pycache__/
 *$py.clas
 
 .idea/
+.vscode/
 env/
